@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import {handleSearch} from '../functions/peticionApi'
-function SearchArea(){
+function SearchArea({setData}){
+
+    const [result, setResult] = useState(null);
 
     // Estado para el valor del input
-    const [searchText, setSearchText] = useState('');
+    const [searchText, setSearchText] = useState('Olivia Rodrigo');
 
     // Estado para la opción seleccionada en el selector
     const [selectedOption, setSelectedOption] = useState('all');
@@ -20,10 +22,12 @@ function SearchArea(){
 
     const handleSearchClick = async () => {
       try {
-        const data = await handleSearch(searchText, selectedOption);
+        const result = await handleSearch(searchText, selectedOption);
         // Aquí puedes manejar la respuesta de la API, por ejemplo, mostrar los resultados en la interfaz de usuario.
-        console.log("Resultados de búsqueda:", data);
-        console.log(data.results);
+        console.log("Resultados de búsqueda:", result);
+        //console.log(result.results);
+        setResult(result.results)
+        setData(result);
       } catch (error) {
         console.error("Error al buscar en la API de iTunes:", error);
       }
