@@ -1,29 +1,30 @@
-import { useState } from 'react'
-import SearchArea from './components/SearchArea';
-import Cards from './components/Cards';
+import { useState } from "react";
+import SearchArea from "./components/SearchArea";
+import Cards from "./components/Cards";
+import Navbar from "./components/Navbar";
+import './app.css'
 
 function App() {
   const [data, setData] = useState(null);
 
-  // Filtrar álbumes únicos por collectionName
-  // Filtrar álbumes únicos por collectionName
-let uniqueAlbums = [];
+  let uniqueAlbums = [];
 
-if (data) {
-  uniqueAlbums = data.results.filter((item, index, self) => {
-    const firstIndex = self.findIndex((i) => i.collectionName === item.collectionName);
-    return index === firstIndex;
-  });
-}
+  if (data) {
+    uniqueAlbums = data.results.filter((item, index, self) => {
+      const firstIndex = self.findIndex(
+        (i) => i.collectionName === item.collectionName
+      );
+      return index === firstIndex;
+    });
+  }
 
-  return(
-  <>
-  <SearchArea setData={setData}/>
-    
-  <Cards data={data} /> 
-  </>
+  return (
+    <div className="app">
+      <Navbar />
+      <SearchArea setData={setData} />
+      <Cards data={data} />
+    </div>
   );
-  
 }
 
-export default App
+export default App;

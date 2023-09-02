@@ -1,0 +1,14 @@
+.card-text {
+  margin-bottom: 0.2rem;
+}
+.card-tittle {
+  margin-bottom: 0.5rem;
+}
+
+.card:hover {
+  background: #e4c5c4;
+}
+
+.card {
+  margin-bottom: 20px;
+}

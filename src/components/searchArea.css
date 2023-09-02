@@ -1,0 +1,6 @@
+.custom-select:focus {
+  background-color: #e4c5c4 !important;
+}
+.no-focus-outline:focus {
+  outline: none !important;
+}
