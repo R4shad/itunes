@@ -1,0 +1,9 @@
+.reproductor-container {
+  display: flex;
+}
+
+.reproductor-text {
+  flex: 1;
+}
+
+/* Agrega otros estilos CSS según sea necesario */

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { handleSearch } from "../functions/peticionApi";
-import "./searchArea.css";
 
 function SearchArea({ setData }) {
   const [result, setResult] = useState(null);
@@ -29,7 +28,8 @@ function SearchArea({ setData }) {
 
   return (
     <div className="d-flex justify-content-center align-items-center gap-3 mt-3 ">
-      <div style={{ borderBottom: "1px solid #ccc", width: "100%" }}></div>
+      <div style={{ borderBottom: "4px solid white", width: "60%" }}></div>
+
       <input
         type="text"
         className="form-control form-control-sm w-auto"
@@ -43,8 +43,9 @@ function SearchArea({ setData }) {
         onChange={handleSelectChange}
       >
         <option value="all">All</option>
+        <option value="podcast">Podcast</option>
         <option value="music">Music</option>
-        <option value="tvShow">TV Show</option>
+        <option value="audiobook">Audiobook</option>
       </select>
       <button className="btn btn-outline-primary" onClick={handleSearchClick}>
         Search

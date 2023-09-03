@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useSound from "use-sound";
+import { formatDescription } from "../functions/formatoDescripcion";
+import "../styles/Reproductor.css";
 
-function Reproductor({ songName, songUrl }) {
+function Reproductor({ songName, description, songUrl }) {
   const [playing, setPlaying] = useState(false);
+  const [desc, setDesc] = useState("");
+  useEffect(() => {
+    setDesc(formatDescription(description));
+  }, [description]);
 
   const [playSound, { stop }] = useSound(songUrl);
 
@@ -16,11 +22,14 @@ function Reproductor({ songName, songUrl }) {
     }
   };
 
+  // Si no existe songName mostramos la descripcion
+  const displaySongName = songName || desc;
+
   return (
-    <div style={{ display: "flex", alignItems: "center" }}>
-      <p style={{ flex: 1 }}>{songName}</p>
+    <div className="reproductor-container">
+      <p className="reproductor-text">{displaySongName}</p>
       <button className="btn btn-outline-primary" onClick={toggleSound}>
-        {playing ? "Pausar" : "Sonar"}
+        {playing ? "Pause" : "Play"}
       </button>
     </div>
   );

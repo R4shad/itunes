@@ -2,7 +2,7 @@ import { useState } from "react";
 import SearchArea from "./components/SearchArea";
 import Cards from "./components/Cards";
 import Navbar from "./components/Navbar";
-import './app.css'
+import "./styles/app.css";
 
 function App() {
   const [data, setData] = useState(null);
@@ -22,7 +22,9 @@ function App() {
     <div className="app">
       <Navbar />
       <SearchArea setData={setData} />
-      <Cards data={data} />
+      <div className="cards">
+        <Cards data={data} />
+      </div>
     </div>
   );
 }

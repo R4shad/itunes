@@ -1,0 +1,13 @@
+.card:hover {
+  background: #a18093;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+.album-tracks {
+  font-weight: bold;
+}
+.card img {
+  border: 2px solid black;
+}
