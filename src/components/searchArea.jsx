@@ -5,18 +5,13 @@ import "./searchArea.css";
 function SearchArea({ setData }) {
   const [result, setResult] = useState(null);
 
-  // Estado para el valor del input
   const [searchText, setSearchText] = useState("Olivia Rodrigo");
 
-  // Estado para la opción seleccionada en el selector
   const [selectedOption, setSelectedOption] = useState("all");
 
-  // Función para manejar cambios en el input
   const handleInputChange = (event) => {
     setSearchText(event.target.value);
   };
-
-  // Función para manejar cambios en el selector
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
   };
@@ -24,9 +19,7 @@ function SearchArea({ setData }) {
   const handleSearchClick = async () => {
     try {
       const result = await handleSearch(searchText, selectedOption);
-      // Aquí puedes manejar la respuesta de la API, por ejemplo, mostrar los resultados en la interfaz de usuario.
       console.log("Resultados de búsqueda:", result);
-      //console.log(result.results);
       setResult(result.results);
       setData(result);
     } catch (error) {
