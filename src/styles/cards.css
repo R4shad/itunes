@@ -1,0 +1,12 @@
+.single-album .col-md-4 {
+  width: 100%;
+}
+.center-button-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background: #e3b8b2;
+}
+.results-heading {
+  margin-left: 20px; /* Ajusta el valor según la cantidad de separación que desees */
+}
