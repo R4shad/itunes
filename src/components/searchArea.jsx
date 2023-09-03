@@ -27,7 +27,7 @@ function SearchArea({ setData }) {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center gap-3 mt-3 ">
+    <nav className="d-flex justify-content-center align-items-center gap-3 mt-3 ">
       <div style={{ borderBottom: "4px solid white", width: "60%" }}></div>
 
       <input
@@ -50,7 +50,7 @@ function SearchArea({ setData }) {
       <button className="btn btn-outline-primary" onClick={handleSearchClick}>
         Search
       </button>
-    </div>
+    </nav>
   );
 }
 

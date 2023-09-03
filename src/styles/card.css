@@ -1,13 +1,18 @@
 .card:hover {
-  background: #a18093;
+  background: #d2bfca;
 }
 
 .card {
   margin-bottom: 20px;
 }
+
 .album-tracks {
   font-weight: bold;
 }
-.card img {
-  border: 2px solid black;
+.logo-link:hover img {
+  transform: scale(1.4);
+  transition: transform 0.2s ease;
+}
+.small-text {
+  font-size: 14px; /* Tamaño de fuente más pequeño */
 }

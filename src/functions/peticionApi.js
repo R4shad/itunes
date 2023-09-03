@@ -5,11 +5,11 @@ export const handleSearch = async (searchText, selectedOption) => {
     const baseUrl = "https://itunes.apple.com/search?";
     const searchTerm = encodeURIComponent(searchText);
     const mediaType = encodeURIComponent(selectedOption);
-    const url = `${baseUrl}term=${searchTerm}&media=${mediaType}`;
+    const url = `${baseUrl}term=${searchTerm}&media=${mediaType}&limit=100`;
 
     // Realizar la solicitud a la API de iTunes y esperar la respuesta
     const response = await fetch(url);
-
+    console.log(url);
     if (!response.ok) {
       throw new Error("La solicitud a la API de iTunes falló");
     }

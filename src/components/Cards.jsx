@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "./Card";
 import "../styles/cards.css";
 
 function Cards({ data }) {
+  const [visibleCards, setVisibleCards] = useState(15); // Estado para las tarjetas visibles
+
   if (!data || data.results.length === 0) {
     return null;
   }
-  // Filtramos de la respuesta de la Api albumes unicos, esto para que en las tarjetas no existan albumes repetidos
+  // Filtramos de la respuesta de la Api albumes únicos
   const uniqueAlbums = data.results.reduce((unique, item) => {
     if (!unique.some((album) => album.collectionName === item.collectionName)) {
       unique.push(item);
@@ -21,7 +23,7 @@ function Cards({ data }) {
       <h5>Results:</h5>
       <div className="container d-flex justify-content-center">
         <div className="row">
-          {uniqueAlbums.map((item, index) => {
+          {uniqueAlbums.slice(0, visibleCards).map((item, index) => {
             const albumSongs = data.results.filter(
               (song) => song.collectionName === item.collectionName
             );
@@ -34,6 +36,16 @@ function Cards({ data }) {
           })}
         </div>
       </div>
+      {visibleCards < uniqueAlbums.length && (
+        <div className="center-button-container">
+          <button
+            className="btn btn-primary btn-light"
+            onClick={() => setVisibleCards(visibleCards + 15)}
+          >
+            See more
+          </button>
+        </div>
+      )}
     </div>
   );
 }

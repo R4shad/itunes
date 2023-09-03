@@ -3,7 +3,7 @@ import "../styles/navbar.css";
 
 function Navbar() {
   return (
-    <nav className="navbar justify-content-center ">
+    <header className="navbar justify-content-center ">
       <div className="logo" style={{ width: "100px", height: "auto" }}>
         <img
           src="https://logowik.com/content/uploads/images/589_itunes.jpg"
@@ -11,7 +11,7 @@ function Navbar() {
           className="img-fluid"
         />
       </div>
-    </nav>
+    </header>
   );
 }
 
