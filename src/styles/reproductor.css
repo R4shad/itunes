@@ -1,5 +1,7 @@
 .reproductor-container {
   display: flex;
+
+  align-items: center; /* Centramos horizontalmente los elementos */
 }
 
 .reproductor-text {

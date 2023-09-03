@@ -6,7 +6,7 @@ import "./styles/app.css";
 
 function App() {
   const [data, setData] = useState(null);
-
+  const [sortOrder, setSortOrder] = useState("asc"); // Nuevo estado para el orden
   let uniqueAlbums = [];
 
   if (data) {
@@ -17,13 +17,17 @@ function App() {
       return index === firstIndex;
     });
   }
-
   return (
     <div className="app">
       <Navbar />
-      <SearchArea setData={setData} />
+      <SearchArea
+        setData={setData}
+        sortOrder={sortOrder}
+        setSortOrder={setSortOrder}
+      />{" "}
+      {/* Pasa setSortOrder */}
       <div className="cards">
-        <Cards data={data} />
+        <Cards data={data} sortOrder={sortOrder} /> {/* Pasa sortOrder */}
       </div>
     </div>
   );

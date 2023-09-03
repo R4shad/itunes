@@ -1,26 +1,30 @@
 import { useState } from "react";
 import { handleSearch } from "../functions/peticionApi";
 
-function SearchArea({ setData }) {
-  const [result, setResult] = useState(null);
-
-  const [searchText, setSearchText] = useState("Olivia Rodrigo");
-
+function SearchArea({ setData, sortOrder, setSortOrder }) {
+  const [searchText, setSearchText] = useState("");
   const [selectedOption, setSelectedOption] = useState("all");
 
   const handleInputChange = (event) => {
     setSearchText(event.target.value);
   };
+
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
   };
 
+  const handleSortOrderChange = (event) => {
+    const newSortOrder = event.target.value;
+    setSortOrder(newSortOrder);
+  };
+
   const handleSearchClick = async () => {
     try {
-      const result = await handleSearch(searchText, selectedOption);
-      console.log("Resultados de búsqueda:", result);
-      setResult(result.results);
-      setData(result);
+      // Utiliza el valor actual de sortOrder en la llamada a la API
+      const newResult = await handleSearch(searchText, selectedOption);
+
+      console.log("Resultados de búsqueda:", newResult);
+      setData(newResult);
     } catch (error) {
       console.error("Error al buscar en la API de iTunes:", error);
     }
@@ -46,6 +50,14 @@ function SearchArea({ setData }) {
         <option value="podcast">Podcast</option>
         <option value="music">Music</option>
         <option value="audiobook">Audiobook</option>
+      </select>
+      <select
+        className="form-select custom-select w-auto no-focus-outline"
+        value={sortOrder}
+        onChange={handleSortOrderChange}
+      >
+        <option value="asc">A-Z</option>
+        <option value="desc">Z-A</option>
       </select>
       <button className="btn btn-outline-primary" onClick={handleSearchClick}>
         Search
